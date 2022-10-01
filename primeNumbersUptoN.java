@@ -9,16 +9,20 @@ class Codechef
 	{
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
+		boolean arr[] = new boolean[n+1];
+		Arrays.fill(arr,true);
+		arr[0]=false;arr[1]=false;
 		for(int i=2;i<=n;i++)
 		{
-		    int c=0;
-		    for(int j=1;j<=i;j++)
-		    {
-		        if(i%j==0)
-		        c++;
-		    }
-		    if(c==2)
-		    System.out.print(i+" ");
+			if(arr[i])
+			{
+				for(int j=2*i;j<=n;j=j+i)
+				arr[j]=false;
+			}
 		}
-	}
+		for(int i=0;i<=n;i++)
+		{
+			if(arr[i])System.out.print(i+" ");
+		}
+
 }
